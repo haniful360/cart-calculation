@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Products from '../Products/Products';
 import './Shop.css'
 
 const Shop = () => {
     const [cart, setCart] = useState([]);
+    useEffect(() =>{
+        setCart([
+            ...cart.filter(item => item.qty > 0)
+        ])  
+    },[cart])
     const products = [
         { id: 1, name: 'laptop' },
         { id: 2, name: 'mobile' },
